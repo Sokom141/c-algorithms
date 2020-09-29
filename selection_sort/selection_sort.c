@@ -1,10 +1,9 @@
+#include "../headers/array_helper.h"
 #include <stdio.h>
 #include <stdlib.h>
 
-int * populate_array(int len_array);
 void swap_min(int pos_min, int pos_to, int* arr_ptr);
 void selection_sort(int* arr_to_sort, int len);
-void print_array(int* ptr_arr, int len);
 
 int main(void) 
 {
@@ -14,7 +13,7 @@ int main(void)
     printf("Insert a length for the array: ");
     scanf("%d", &len_array);
 
-    arr = populate_array(len_array);
+    arr = populate_array_int(len_array);
 
     printf("Unordered array:\n");
     print_array(arr, len_array);
@@ -26,21 +25,6 @@ int main(void)
 
     free(arr);
     return 0;
-}
-
-int * populate_array(int len_array)
-{
-    int *arr = malloc( len_array * sizeof(int));
-
-    for (int i=0; i<len_array; i++) 
-    {
-        int place_holder;
-        printf("Insert the number at index: %d \n", i);
-        scanf("%d", &place_holder);
-        arr[i] = place_holder;
-    }
-
-    return arr;
 }
 
 void swap_min(int pos_min, int pos_to, int* arr_ptr)
@@ -68,19 +52,6 @@ void selection_sort(int* arr_to_sort, int len)
 
         if (pos_min != j) {
             swap_min(pos_min, j, arr_to_sort);
-        }
-    }
-}
-
-void print_array(int* ptr_arr, int len)
-{
-    printf("[");
-    for(int i=0; i<len; i++){
-
-        if(i == len - 1){
-            printf("%d]\n", ptr_arr[i]);
-        } else {
-            printf("%d, ", ptr_arr[i]);
         }
     }
 }
