@@ -2,33 +2,30 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int* populate_array_int(int len_array)
 // Return a pointer to an array of integers of length n
-{
-    int *arr = malloc( len_array * sizeof(int));
+int *populate_array_int(int len_array){
+    int *arr = malloc(sizeof *arr * len_array);
 
     for (int i=0; i<len_array; i++) 
     {
-        int place_holder;
         printf("Insert the number at index: %d \n", i);
-        scanf("%d", &place_holder);
-        arr[i] = place_holder;
+        scanf("%d", &arr[i]);
     }
 
     return arr;
 }
 
-
-void print_array(int* ptr_arr, int len)
-//prints an array
-{
+// prints an array
+void print_array(int *ptr_arr, int len){
     printf("[");
     for(int i=0; i<len; i++){
-
-        if(i == len - 1){
-            printf("%d]\n", ptr_arr[i]);
-        } else {
-            printf("%d, ", ptr_arr[i]);
-        }
+        printf((i == len - 1) ? "%d]\n" : "%d, ", ptr_arr[i]);
     }
+}
+
+// swap to position of an integer array
+void swap(int pos_from, int pos_to, int *ptr_arr){
+   int place_holder = ptr_arr[pos_to];
+   ptr_arr[pos_to] = ptr_arr[pos_from];
+   ptr_arr[pos_from] = place_holder;
 }

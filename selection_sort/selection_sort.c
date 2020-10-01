@@ -2,11 +2,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void swap_min(int pos_min, int pos_to, int* arr_ptr);
-void selection_sort(int* arr_to_sort, int len);
+void selection_sort(int *arr_to_sort, int len);
 
-int main(void) 
-{
+int main(void) {
     int len_array = 0;
     int *arr;
 
@@ -27,15 +25,7 @@ int main(void)
     return 0;
 }
 
-void swap_min(int pos_min, int pos_to, int* arr_ptr)
-{
-   int place_holder = arr_ptr[pos_to];
-   arr_ptr[pos_to] = arr_ptr[pos_min];
-   arr_ptr[pos_min] = place_holder;
-}
-
-void selection_sort(int* arr_to_sort, int len) 
-{
+void selection_sort(int* arr_to_sort, int len) {
     int min; 
     int pos_min;
 
@@ -51,7 +41,7 @@ void selection_sort(int* arr_to_sort, int len)
         }
 
         if (pos_min != j) {
-            swap_min(pos_min, j, arr_to_sort);
+            swap(pos_min, j, arr_to_sort);
         }
     }
 }
