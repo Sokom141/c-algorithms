@@ -3,6 +3,7 @@
 #include <stdlib.h>
 
 // Return a pointer to an array of integers of length n
+// This assume the caller will free()
 int *populate_array_int(int len_array){
     int *arr = malloc(sizeof *arr * len_array);
 
@@ -28,4 +29,17 @@ void swap(int pos_from, int pos_to, int *ptr_arr){
    int place_holder = ptr_arr[pos_to];
    ptr_arr[pos_to] = ptr_arr[pos_from];
    ptr_arr[pos_from] = place_holder;
+}
+
+SmartArray *create_smart_array(int length){
+
+    SmartArray *array_struct = malloc(sizeof *array_struct);
+    array_struct->length = length;
+    array_struct->array = malloc(sizeof *(array_struct->array) * length);
+    return array_struct;
+}
+
+void free_smart_array(SmartArray *a){
+    free(a->array);
+    free(a);
 }
